@@ -17,7 +17,12 @@ export class ServerApp {
         console.log('Server running...')
         
         const table = new CreateTable().execute({ base, limit })
-        const wasCreate = new SaveFile().execute({ fileContent: table, destination: destination, filename: name })
+        const wasCreate = new SaveFile()
+            .execute({ 
+                fileContent: table, 
+                destination: destination, 
+                fileName: name 
+            })
 
         if( show ){
             console.log(table)

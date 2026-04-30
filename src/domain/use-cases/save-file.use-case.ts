@@ -7,18 +7,18 @@ export interface SaveFileUseCase {
 export interface Options {
     fileContent: string,
     destination?: string,
-    filename?: string
+    fileName?: string
 }
 
 export class SaveFile implements SaveFileUseCase {
 
     constructor(){}
 
-    execute({ fileContent, destination = `outputs`, filename = 'table'}: Options): boolean{
+    execute({ fileContent, destination = `outputs`, fileName = 'table'}: Options): boolean{
         
         try{
             fs.mkdirSync(destination, { recursive: true})
-            fs.writeFileSync(`${destination}/${ filename }.txt`, fileContent)   
+            fs.writeFileSync(`${destination}/${ fileName }.txt`, fileContent)   
             return true           
         }catch(error){
             console.error(error)
